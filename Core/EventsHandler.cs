@@ -7,12 +7,14 @@ namespace CustomEventSystem.Core
 {
     public class EventsHandler : MonoBehaviour
     {
+        [SerializeField] private bool cacheInactiveGameObjects;
+        
         private readonly Dictionary<EventName, EventData> events
             = new Dictionary<EventName, EventData>();
 
         private void Awake()
         {
-            MonoBehaviour[] _behaviours = GetComponentsInChildren<MonoBehaviour>();
+            MonoBehaviour[] _behaviours = GetAttachedComponents();
 
             for (int i = 0; i < Enum.GetValues(typeof(EventName)).Length; i++)
                 AssignTargetsToEventType((EventName) i, _behaviours);
@@ -34,11 +36,16 @@ namespace CustomEventSystem.Core
                 _data.InvokeEvent(_args);
         }
 
+        private MonoBehaviour[] GetAttachedComponents()
+        {
+            return GetComponentsInChildren<MonoBehaviour>(cacheInactiveGameObjects);
+        }
+
         private EventData GetEventData(EventName _name)
         {
             if (events.ContainsKey(_name) == false)
                 AssignTargetsToEventType(
-                    _name, GetComponentsInChildren<MonoBehaviour>());
+                    _name, GetAttachedComponents());
 
             return events[_name];
         }
