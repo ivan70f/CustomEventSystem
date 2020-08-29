@@ -24,5 +24,5 @@ object[] _arguments = new object[]
     "Test string argument",
     123
 };
-handler.InvokeEvent(EventName.OnEventWithArgumentsExample, _arguments);
+GetComponent<EventsHandler>().InvokeEvent(EventName.OnEventWithArgumentsExample, _arguments);
 ```
