@@ -10,18 +10,18 @@ Quick guide:
 If you want to use events with arguments you should create method with required argumetns and add new objects array with all your arguments in the same order as you defined in your method and pass throw InvokeEvent function as a second argument. Example:
 
 
-###
+```
 // Create method
 private void OnEventWithArgumentsExample(string _stringArgument, int _intArgument)
-        {
-            Debug.Log(_stringArgument + "  " + _intArgument);
-        }
+{
+    Debug.Log(_stringArgument + "  " + _intArgument);
+}
         
 // Invoke event
 object[] _arguments = new object[]
-            {
-                "Test string argument",
-                123
-            };
+{
+    "Test string argument",
+    123
+};
 handler.InvokeEvent(EventName.OnEventWithArgumentsExample, _arguments);
-###
+```
