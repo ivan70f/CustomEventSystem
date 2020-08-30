@@ -12,6 +12,11 @@ namespace CustomEventSystem.Examples
             Debug.Log("Example event invoke");
         }
 
+        /// <summary>
+        /// Argumets should be in the same order as you passed it throw InvokeEvent function
+        /// </summary>
+        /// <param name="_stringArgument"></param>
+        /// <param name="_intArgument"></param>
         private void OnEventWithArgumentsExample(string _stringArgument, int _intArgument)
         {
             Debug.Log(_stringArgument + "  " + _intArgument);
