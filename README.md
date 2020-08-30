@@ -1,6 +1,8 @@
 # CustomEventSystem
 This package allows you to use your custom events like Unity built-in event's (Awake, Start, OnEnable...).
 
+All examples you can find in directory Examples.
+
 Quick guide:
 1. Add name of your event to enum file "EventName"
 ```
@@ -26,11 +28,16 @@ private void OnEventWithArgumentsExample(string _stringArgument, int _intArgumen
     Debug.Log(_stringArgument + "  " + _intArgument);
 }
         
+...
+
 // Invoke event
-object[] _arguments = new object[]
+private void EventInvoke() 
 {
-    "Test string argument",
-    123
-};
-GetComponent<EventsHandler>().InvokeEvent(EventName.OnEventWithArgumentsExample, _arguments);
+    object[] _arguments = new object[]
+    {
+        "Test string argument",
+        123
+    };
+    GetComponent<EventsHandler>().InvokeEvent(EventName.OnEventWithArgumentsExample, _arguments);
+}
 ```
